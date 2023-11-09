@@ -216,11 +216,13 @@ export function mapRevenueTypesToReactSelectOptions(revenueTypes) {
 }
 
 export function mapRevenueFormDataToApiCallFormat(data, revenueTypes, sale_id, farm_id) {
+  const [year, month, day] = data[SALE_DATE].split('-');
+  const saleDate = new Date(+year, +month - 1, +day).toISOString();
   let sale = {
     sale_id: sale_id ?? undefined,
     farm_id: farm_id ?? undefined,
     customer_name: data[CUSTOMER_NAME],
-    sale_date: data[SALE_DATE],
+    sale_date: saleDate,
     revenue_type_id: data[REVENUE_TYPE_OPTION].value,
     note: data.note ? data[NOTE] : null,
   };

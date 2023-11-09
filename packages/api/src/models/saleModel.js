@@ -38,7 +38,7 @@ class Sale extends baseModel {
       properties: {
         sale_id: { type: 'integer' },
         customer_name: { type: 'string', minLength: 1, maxLength: 255 },
-        sale_date: { type: 'string', minLength: 1, maxLength: 255 },
+        sale_date: { type: 'string', format: 'date-time' },
         farm_id: { type: 'string' },
         revenue_type_id: { type: 'integer' },
         value: { type: ['number', 'null'], format: 'float' },
